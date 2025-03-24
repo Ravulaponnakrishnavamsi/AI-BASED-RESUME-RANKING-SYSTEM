@@ -1,12 +1,12 @@
 import streamlit as st
 from crewai import Crew
-from Agents.jd_generator import jd_generator, create_jd_task
-from Agents.resume_ranker import resume_ranker, create_resume_rank_task
-from Agents.email_automation import email_automation, create_email_task, simulate_email_api
-from Agents.interview_scheduler import interview_scheduler, create_schedule_task, simulate_calendar_api, create_schedule_summary_task
-from Agents.interview_agent import interview_agent, create_interview_task, evaluate_response_task
-from Agents.hire_recommendation import hire_recommendation_agent, create_hire_recommendation_task
-from Agents.sentiment_analyzer import sentiment_analyzer, create_sentiment_task
+from jd_generator import jd_generator, create_jd_task
+from resume_ranker import resume_ranker, create_resume_rank_task
+from email_automation import email_automation, create_email_task, simulate_email_api
+from interview_scheduler import interview_scheduler, create_schedule_task, simulate_calendar_api, create_schedule_summary_task
+from interview_agent import interview_agent, create_interview_task, evaluate_response_task
+from hire_recommendation import hire_recommendation_agent, create_hire_recommendation_task
+from sentiment_analyzer import sentiment_analyzer, create_sentiment_task
 from datetime import datetime
 import os
 import logging

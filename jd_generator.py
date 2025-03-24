@@ -11,7 +11,7 @@ import os
 import logging
 import re
 load_dotenv()
-logging.basicConfig(filename="Logs/app.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(filename="app.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 llm = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),
@@ -57,7 +57,7 @@ def store_in_vdb(documents):
     vdb = FAISS.from_documents(chunks, embeddings)
     return vdb
 
-def create_jd_task(job_title, skills, experience_level, template_path="Templates/jd_template.txt"):
+def create_jd_task(job_title, skills, experience_level, template_path="jd_template.txt"):
     documents = fetch_related_content(job_title, skills, experience_level)
     vdb = store_in_vdb(documents) if documents else None
     context = vdb.similarity_search(f"Job description for {job_title}", k=3) if vdb else []

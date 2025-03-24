@@ -5,7 +5,7 @@ import os
 import logging
 
 load_dotenv()
-logging.basicConfig(filename="Logs/app.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(filename="app.log", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 llm = ChatGroq(
     api_key=os.getenv("GROQ_API_KEY"),

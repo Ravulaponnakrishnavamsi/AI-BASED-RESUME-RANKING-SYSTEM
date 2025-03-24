@@ -1,0 +1,8 @@
+Subject: {subject}
+
+Dear {candidate_name},
+
+{body}
+
+Best regards,
+Hiring Team

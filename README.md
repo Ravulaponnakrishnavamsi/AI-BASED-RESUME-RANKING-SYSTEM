@@ -1,3 +1,14 @@
+---
+license: apache-2.0
+title: ai-recruitment-system
+sdk: streamlit
+emoji: 🚀
+colorTo: red
+short_description: ai-recruitment-system
+---
+
+
+
 # AI Recruitment System
 
 ## Overview

@@ -1,17 +1,50 @@
-crewai==0.30.0
-langchain-groq==0.1.0
-streamlit==1.32.0
-python-dotenv==1.0.0
+# ==========================================
+# CORE BERT DEPENDENCIES (REQUIRED)
+# ==========================================
+sentence-transformers==2.3.1
+transformers==4.36.0
+torch==2.1.0
+scikit-learn==1.4.0
+numpy==1.24.0
+
+# ==========================================
+# TEXT PROCESSING & PDF
+# ==========================================
 PyPDF2==3.0.1
-googlesearch-python
+python-docx==1.1.0
+beautifulsoup4==4.12.3
+bs4
+
+# ==========================================
+# OPTIONAL: LLM for Email/Feedback ONLY
+# (Can be disabled via config.py)
+# ==========================================
+crewai==0.30.0
+groq>=0.5.0
+langchain-groq==0.1.0
 langchain==0.1.20  
 langchain-community==0.0.38  
-beautifulsoup4==4.12.3
+googlesearch-python
+pandas>=2.0.0
 faiss-cpu==1.8.0
+
+# ==========================================
+# WEB FRAMEWORK
+# ==========================================
+streamlit==1.32.0
+streamlit-extras==0.4.0
+
+# ==========================================
+# UTILITIES
+# ==========================================
+python-dotenv==1.0.0
+requests==2.32.3
 google-auth-oauthlib==1.2.0
 google-auth-httplib2==0.2.0
 google-api-python-client==2.134.0
-requests==2.32.3
-streamlit-extras==0.4.0
-sentence-transformers
-bs4
+
+# ==========================================
+# VISUALIZATIONS
+# ==========================================
+plotly==5.18.0
+kaleido==0.2.1

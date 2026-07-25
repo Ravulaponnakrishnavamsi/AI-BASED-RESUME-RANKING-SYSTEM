@@ -1,56 +1,21 @@
----
-license: apache-2.0
-title: ai-recruitment-system
-sdk: streamlit
-emoji: 🚀
-colorTo: red
-short_description: ai-recruitment-system
----
-
-
-
 # AI Recruitment System
 
 ## Overview
 
-The **AI Recruitment System** is an advanced, AI-driven hiring platform built in Python to automate and optimize the recruitment process. Powered by Llama 3.x (via Groq’s API) and the CrewAI multi-agent framework, it offers a suite of tools accessible through a Streamlit web interface. The system handles everything from creating detailed job descriptions to conducting AI-driven interviews, making it an efficient solution for modern hiring needs.
+The **AI Recruitment System** is an advanced, AI-driven hiring platform built in Python to automate and optimize the recruitment process. (via Groq’s API) , it offers a suite of tools accessible through a Streamlit web interface. The system handles everything from creating detailed job descriptions to conducting AI-driven interviews, making it an efficient solution for modern hiring needs.
 
 Key features include:
 - **Detailed Job Description Generation**: Produces comprehensive job postings with multiple sections.
 - **Resume Ranking**: Evaluates resumes for job fit with bias mitigation.
 - **Personalized Email Automation**: Sends AI-generated, tailored emails (e.g., interview invites).
-- **Interview Scheduling**: Schedules interviews based on candidate availability, with an AI chatbot interviewer.
-- **Interview Agent**: Conducts interactive interviews and evaluates responses.
-- **Hire Recommendation**: Analyzes transcripts for hiring decisions.
-- **Sentiment Analysis**: Assesses candidate sentiment from interviews.
+  
 
-The system incorporates a **Model Context Protocol (MCP)** to maintain state across its components. MCP uses Streamlit’s session state (`st.session_state.mcp_context`) to store critical outputs—like job descriptions, ranked resumes, scheduled times, and interview transcripts—enabling seamless data flow between tabs without persistent storage. This enhances workflow efficiency and ensures context is preserved throughout the hiring process.
 
 The system prioritizes ethical AI practices, such as bias avoidance and in-memory data processing for privacy (via MCP), and uses simulated APIs for email and calendar functions.
 
 
-## Project Structure
-ai-recruitment-system/
-├── Agents/
-│   ├── jd_generator.py         # Generates detailed job descriptions
-│   ├── resume_ranker.py        # Ranks resumes with fairness
-│   ├── email_automation.py     # Crafts personalized emails
-│   ├── interview_scheduler.py  # Schedules interviews based on candidate availability
-│   ├── interview_agent.py      # Conducts AI-driven interviews
-│   ├── hire_recommendation.py  # Provides hiring recommendations
-│   ├── sentiment_analyzer.py   # Analyzes sentiment in transcripts
-├── Templates/
-│   ├── jd_template.txt         # Default JD template with detailed sections
-├── Logs/
-│   ├── app.log                 # Log file for debugging
-├── app.py                      # Streamlit UI for the system
-├── requirements.txt            # Dependencies
-├── .env                        # GROQ_API_KEY
-└── README.md                   # This file
 
-
-
-## Agent Functionality
+## Functionality
 
 The system uses a multi-agent architecture, with each agent specializing in a recruitment task. Below is a detailed explanation of their roles and how they leverage the Model Context Protocol (MCP):
 
@@ -80,37 +45,9 @@ The system uses a multi-agent architecture, with each agent specializing in a re
   - Simulates email delivery with a mock API.
 - **Output**: A drafted email and simulated API response.
 
-### 4. Interview Scheduler (`interview_scheduler.py`)
-- **Role**: Schedules interviews based on candidate availability.
-- **Functionality**: 
-  - Accepts candidate name, job title, and availability (e.g., "March 25, 2025, 9 AM - 12 PM").
-  - Since the interviewer is an AI chatbot (always available), it selects a time within the candidate’s range.
-  - Generates a concise summary of the scheduled interview.
-  - Stores the scheduled time in MCP (`mcp_context["scheduled_time"]`).
-  - Simulates calendar integration via a mock API.
-- **Output**: Scheduled time, calendar response, and a summary.
 
-### 5. Interview Agent (`interview_agent.py`)
-- **Role**: Conducts AI-driven interviews.
-- **Functionality**: 
-  - Uses Retrieval-Augmented Generation (RAG) with web data and the job description (from MCP) to generate job-specific questions.
-  - Engages in a conversational loop, evaluating responses and asking follow-ups.
-  - Stores the transcript in MCP (`mcp_context["interview_transcript"]`) for downstream analysis.
-- **Output**: Interview questions and a full transcript.
 
-### 6. Hire Recommendation (`hire_recommendation.py`)
-- **Role**: Provides hiring recommendations from transcripts.
-- **Functionality**: 
-  - Analyzes interview transcripts (from MCP) for strengths, weaknesses, and a Hire/No-Hire decision.
-  - Ensures fairness by avoiding bias (e.g., gender, age, ethnicity) and flagging issues.
-- **Output**: A detailed analysis with a hiring recommendation.
 
-### 7. Sentiment Analyzer (`sentiment_analyzer.py`)
-- **Role**: Assesses candidate sentiment in interviews.
-- **Functionality**: 
-  - Evaluates the tone and sentiment (e.g., positive, neutral, negative) of interview transcripts (from MCP).
-  - Offers insights into candidate confidence and engagement.
-- **Output**: A sentiment analysis report.
 
 ## How Llama 3.x Powers the Solution
 

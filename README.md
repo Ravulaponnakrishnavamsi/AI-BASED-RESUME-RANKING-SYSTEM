@@ -1,36 +1,48 @@
-AI Recruitment & Resume Ranking System
-Overview
-The AI Recruitment & Resume Ranking System is an enterprise-grade hiring platform built with Python, Streamlit, PyTorch, Sentence-Transformers, and Groq LLMs.
+# 🤖 AI Recruitment & Resume Ranking System
+
+## Overview
+
+The **AI Recruitment & Resume Ranking System** is an enterprise-grade hiring platform built with Python, Streamlit, PyTorch, Sentence-Transformers, and Groq LLMs.
 
 It provides recruiters with high-accuracy candidate ranking (using dual BERT / TF-IDF models), resume authenticity & fraud detection analysis, fast AI candidate feedback generation, user authentication, and automated email communications.
 
-🌟 Key Features
-1. 🏆 Dual-Model Resume Ranking
-🤖 BERT Mode (Sentence-BERT / all-mpnet-base-v2): Deep semantic representation matching between job descriptions and resumes across semantic similarity, technical skills match, experience relevance, and credibility.
-⚡ TF-IDF Mode (Scikit-Learn TF-IDF Vectorizer): Near-instant keyword-frequency ranking with zero model download overhead.
-Explainability Engine: Detailed per-candidate score breakdowns (0–100%) and skill match analysis.
-2. 🛡️ Fraud Detection & Credibility Dashboard
-Risk Assessment: Color-coded risk classification (Low, Medium, High Risk).
-Interactive Visualizations:
-Fraud Risk Distribution: Donut pie charts displaying candidate risk breakdown.
-Multi-Score Comparison: Grouped bar charts comparing Match Score, Skills Match, and Credibility across candidates.
-Fraud Risk Map: Interactive scatter plots comparing match score against credibility.
-Skill Radar & Gauges: Multi-dimensional candidate radar charts and individual authenticity gauges.
-Fraud Indicators: Flags keyword stuffing, skill exaggeration, experience consistency, and education verifiability.
-3. 📝 Ultra-Fast AI Feedback Generation
-Powered by Direct Groq SDK (llama-3.1-8b-instant) for high-throughput feedback generation without agent overhead (~1-2 seconds per candidate).
-Real-time progress bar with per-candidate status updates.
-Generates tailored feedback reports for both shortlisted and rejected candidates including strengths, growth areas, actionable suggestions, and next steps.
-Exportable plain-text feedback reports.
-4. 📧 Automated Candidate Communication
-Automated email generation (interview invitations, rejection updates, hiring updates).
-SMTP integration and simulated email delivery.
-5. 🔐 Multi-User Authentication System
-Secure user authentication with encrypted password hashing (SHA-256 with salting).
-Persistent JSON user storage supporting recruiter login and new user registration.
-📁 Project Architecture
-text
+---
 
+## 🌟 Key Features
+
+### 1. 🏆 Dual-Model Resume Ranking
+- **🤖 BERT Mode (`Sentence-BERT / all-mpnet-base-v2`)**: Deep semantic representation matching between job descriptions and resumes across semantic similarity, technical skills match, experience relevance, and credibility.
+- **⚡ TF-IDF Mode (`Scikit-Learn TF-IDF Vectorizer`)**: Near-instant keyword-frequency ranking with zero model download overhead.
+- **Explainability Engine**: Detailed per-candidate score breakdowns (0–100%) and skill match analysis.
+
+### 2. 🛡️ Fraud Detection & Credibility Dashboard
+- **Risk Assessment**: Color-coded risk classification (Low, Medium, High Risk).
+- **Interactive Visualizations**:
+  - **Fraud Risk Distribution**: Donut pie charts displaying candidate risk breakdown.
+  - **Multi-Score Comparison**: Grouped bar charts comparing Match Score, Skills Match, and Credibility across candidates.
+  - **Fraud Risk Map**: Interactive scatter plots comparing match score against credibility.
+  - **Skill Radar & Gauges**: Multi-dimensional candidate radar charts and individual authenticity gauges.
+- **Fraud Indicators**: Flags keyword stuffing, skill exaggeration, experience consistency, and education verifiability.
+
+### 3. 📝 Ultra-Fast AI Feedback Generation
+- Powered by **Direct Groq SDK (`llama-3.1-8b-instant`)** for high-throughput feedback generation without agent overhead (~1-2 seconds per candidate).
+- Real-time progress bar with per-candidate status updates.
+- Generates tailored feedback reports for both shortlisted and rejected candidates including strengths, growth areas, actionable suggestions, and next steps.
+- Exportable plain-text feedback reports.
+
+### 4. 📧 Automated Candidate Communication
+- Automated email generation (interview invitations, rejection updates, hiring updates).
+- SMTP integration and simulated email delivery.
+
+### 5. 🔐 Multi-User Authentication System
+- Secure user authentication with encrypted password hashing (`SHA-256` with salting).
+- Persistent JSON user storage supporting recruiter login and new user registration.
+
+---
+
+## 📁 Project Architecture
+
+```text
 ai-recruitment-system/
 ├── ats/                         # ATS Core Engine
 │   ├── __init__.py
@@ -58,70 +70,83 @@ ai-recruitment-system/
 ├── requirements.txt             # Python Package Dependencies
 ├── .env.example                 # Environment Variable Template
 └── README.md                    # System Documentation
-⚡ Scoring Architecture & Weights
+```
+
+---
+
+## ⚡ Scoring Architecture & Weights
+
 The system computes candidate scores using weighted component evaluation:
 
-Final Score=(S 
-semantic
-​
- ×0.40)+(S 
-skills
-​
- ×0.30)+(S 
-experience
-​
- ×0.20)+(S 
-credibility
-​
- ×0.10)
-Semantic Similarity (40%): Cosine similarity between resume and job description vectors.
-Skills Match (30%): Ratio of matched vs required technical and domain skills.
-Experience Relevance (20%): Extracted experience section alignment.
-Credibility (10%): Document structure, certification presence, and anti-keyword-stuffing verification.
-🛠️ Installation & Setup Guide
-1. Prerequisites
-Python 3.9+ installed
-Git installed
-Groq API Key (Get one free at console.groq.com)
-2. Clone Repository
-bash
+$$\text{Final Score} = (S_{\text{semantic}} \times 0.40) + (S_{\text{skills}} \times 0.30) + (S_{\text{experience}} \times 0.20) + (S_{\text{credibility}} \times 0.10)$$
 
+- **Semantic Similarity (40%)**: Cosine similarity between resume and job description vectors.
+- **Skills Match (30%)**: Ratio of matched vs required technical and domain skills.
+- **Experience Relevance (20%)**: Extracted experience section alignment.
+- **Credibility (10%)**: Document structure, certification presence, and anti-keyword-stuffing verification.
+
+---
+
+## 🛠️ Installation & Setup Guide
+
+### 1. Prerequisites
+- Python 3.9+ installed
+- Git installed
+- Groq API Key (Get one free at [console.groq.com](https://console.groq.com/))
+
+### 2. Clone Repository
+```bash
 git clone https://github.com/Ravulaponnakrishnavamsi/AI-BASED-RESUME-RANKING-SYSTEM.git
 cd AI-BASED-RESUME-RANKING-SYSTEM
-3. Create & Activate Virtual Environment
-bash
+```
 
+### 3. Create & Activate Virtual Environment
+```bash
 # Windows
 python -m venv venv
 venv\Scripts\activate
+
 # Linux / macOS
 python3 -m venv venv
 source venv/bin/activate
-4. Install Dependencies
-bash
+```
 
+### 4. Install Dependencies
+```bash
 pip install -r requirements.txt
-5. Configure Environment Variables
-Create a .env file in the root directory:
+```
 
-env
-
+### 5. Configure Environment Variables
+Create a `.env` file in the root directory:
+```env
 GROQ_API_KEY=your_groq_api_key_here
 HF_TOKEN=your_huggingface_token_optional
-🚀 Running the Application
+```
+
+---
+
+## 🚀 Running the Application
+
 Launch the Streamlit web dashboard:
-
-bash
-
+```bash
 streamlit run app.py
-Open your browser at http://localhost:8501.
+```
 
-Demo Credentials
-Email: recruiter@ai.com
-Password: demo123
-📋 Technology Stack
-Frontend / UI: Streamlit, Streamlit Extras
-NLP / ML: PyTorch, Sentence-Transformers (all-mpnet-base-v2), Scikit-Learn
-LLM / Inference: Groq Cloud API (llama-3.1-8b-instant, llama-3.3-70b-versatile)
-Data & Plotting: Pandas, Plotly Express, Plotly Graph Objects
-Document Processing: PyPDF2, Regex
+Open your browser at `http://localhost:8501`.
+
+### Demo Credentials
+- **Email:** `recruiter@ai.com`
+- **Password:** `demo123`
+
+---
+
+## 📋 Technology Stack
+
+- **Frontend / UI:** Streamlit, Streamlit Extras
+- **NLP / ML:** PyTorch, Sentence-Transformers (`all-mpnet-base-v2`), Scikit-Learn
+- **LLM / Inference:** Groq Cloud API (`llama-3.1-8b-instant`, `llama-3.3-70b-versatile`)
+- **Data & Plotting:** Pandas, Plotly Express, Plotly Graph Objects
+- **Document Processing:** PyPDF2, Regex
+
+---
+
